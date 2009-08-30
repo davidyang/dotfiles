@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ssh 10.62.1.$1
