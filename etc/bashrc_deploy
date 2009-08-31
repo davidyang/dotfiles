@@ -1,0 +1,8 @@
+dep_eco() {
+  RAILS_ENV=$1 cap $1 deploy
+}
+
+dep_fe () {
+  git push origin +origin/$1:refs/heads/$2
+  RAILS_ENV=$2 cap $2 deploy
+}
