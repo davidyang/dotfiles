@@ -1,0 +1,9 @@
+[user]                                     
+  email = david.g.yang@gmail.com
+  name = David Yang
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+
