@@ -12,6 +12,7 @@ rm ~/.bashrc_help
 rm ~/.bashrc_app_specific
 rm ~/.bashrc_host_aliases
 rm ~/.bashrc_deploy
+rm ~/.railsrc
 
 ln -s ~/cl/etc/bash_profile ~/.bash_profile
 ln -s ~/cl/etc/bashrc ~/.bashrc
@@ -19,6 +20,8 @@ ln -s ~/cl/etc/bashrc_help ~/.bashrc_help
 ln -s ~/cl/etc/bashrc_app_specific ~/.bashrc_app_specific
 ln -s ~/cl/etc/bashrc_host_aliases ~/.bashrc_host_aliases
 ln -s ~/cl/etc/bashrc_deploy ~/.bashrc_deploy
+ln -s ~/cl/etc/railsrc ~/.railsrc
+
 # vim
 rm ~/.vimrc
 rm ~/.gvimrc

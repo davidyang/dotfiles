@@ -96,3 +96,18 @@ end
 # http://sketches.rubyforge.org/
 # require 'sketches'
 # Sketches.config :editor => 'mvim'
+
+
+require 'irb/completion'
+ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
+
+require 'irb/ext/save-history'
+IRB.conf[:SAVE_HISTORY] = 100
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+require 'rubygems'
+
+require 'looksee/shortcuts'
+
+if ENV['RAILS_ENV']
+    load File.dirname(__FILE__) + '/.railsrc'
+end
