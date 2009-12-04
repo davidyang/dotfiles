@@ -1,0 +1,4 @@
+alias gilt_server='BLACKBIRD=false PLAIN_JAVASCRIPTS=true PLAIN_STYLESHEETS=true OVERRIDE_PERFORMANCE_CONTRACTS=true /web/gilt/script/server thin'
+
+alias gilt_upgrade='cd /web/gilt/; RAILS_ENV=development DB_UPGRADE_INTERACTIVE=false DB_UPGRADE_QUIET=false rake db:upgrade; RAILS_ENV=test DB_UPGRADE_INTERACTIVE=false DB_UPGRADE_QUIET=false rake db:upgrade'
+

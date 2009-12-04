@@ -75,7 +75,7 @@ set splitbelow splitright
 
 
 " Cursor highlights ***********************************************************
-set cursorline
+"set cursorline
 "set cursorcolumn
 
 
@@ -90,7 +90,7 @@ set smartcase " Ignore case when searching lowercase
 "set t_Co=256 " 256 colors
 set background=dark 
 syntax on " syntax highlighting
-colorscheme elflord
+colorscheme koehler
 
 
 " Status Line *****************************************************************
@@ -132,9 +132,9 @@ filetype plugin indent on
 
 
 " Inser New Line **************************************************************
-map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
-map <Enter> o<ESC>
-set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
+"map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
+"map <Enter> o<ESC>
+"set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
 
 
 " Sessions ********************************************************************
@@ -144,7 +144,7 @@ set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 " Misc ************************************************************************
 set backspace=indent,eol,start
-set number " Show line numbers
+"set number " Show line numbers
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 
@@ -156,9 +156,9 @@ set nolist
 
 
 " Mouse ***********************************************************************
-"set mouse=a " Enable the mouse
-"behave xterm
-"set selectmode=mouse
+set mouse=a " Enable the mouse
+behave xterm
+set selectmode=mouse
 
 
 " Cursor Movement *************************************************************
@@ -173,21 +173,21 @@ map E ge
 
 
 " Ruby stuff ******************************************************************
-"compiler ruby         " Enable compiler support for ruby
-"map <F5> :!ruby %<CR>
+compiler ruby         " Enable compiler support for ruby
+map <F5> :!ruby %<CR>
 
 
 " Omni Completion *************************************************************
-autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-" May require ruby compiled in
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
-
+"autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+"autocmd FileType c set omnifunc=ccomplete#Complete
+"" May require ruby compiled in
+"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
+"
 
 
 " -----------------------------------------------------------------------------  
@@ -213,17 +213,17 @@ let NERDTreeMouseMode=1
 
 
 " fuzzyfinder_textmate ********************************************************
-map ,f :FuzzyFinderTextMate<CR>
-map ,b :FuzzyFinderBuffer<CR>
-"let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
+map ,f :FufFile<CR>
+map ,b :FufBuffer<CR>
+let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
 " autocomplpop ***************************************************************
 " complete option
 "set complete=.,w,b,u,t,k
 "let g:AutoComplPop_CompleteOption = '.,w,b,u,t,k'
 "set complete=.
-let g:AutoComplPop_IgnoreCaseOption = 0
-let g:AutoComplPop_BehaviorKeywordLength = 2
+"let g:AutoComplPop_IgnoreCaseOption = 0
+"let g:AutoComplPop_BehaviorKeywordLength = 2
 
 
 
