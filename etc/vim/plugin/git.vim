@@ -191,6 +191,38 @@ function! GitCatFile(file)
     call <SID>OpenGitBuffer(git_output)
 endfunction
 
+function! GitBlameDavid()
+    let git_output = s:SystemGit('blame -- ' . expand('%'))
+    if !strlen(git_output)
+        echo "No output from git command"
+        return
+    endif
+
+    setlocal noscrollbind
+
+    " :/
+    let git_command_edit_save = g:git_command_edit
+    let g:git_command_edit = 'leftabove vnew'
+    call <SID>OpenGitBuffer(git_output)
+    let g:git_command_edit = git_command_edit_save
+
+    setlocal modifiable
+    silent %s/\d\d\d\d\zs \+\d\+).*//
+    vertical resize 20
+    setlocal nomodifiable
+    setlocal nowrap scrollbind
+
+    if g:git_highlight_blame
+        call s:DoHighlightGitBlame()
+    endif
+
+    wincmd p
+    setlocal nonumber
+    setlocal nowrap scrollbind
+
+    syncbind
+endfunction
+
 " Show revision and author for each line.
 function! GitBlame()
     let git_output = s:SystemGit('blame -- ' . expand('%'))

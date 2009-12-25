@@ -102,7 +102,7 @@ set ruler " Show ruler
 " Line Wrapping ***************************************************************
 set nowrap
 set linebreak  " Wrap at word
-
+set statusline=%<%f%m%r\ (%l:%c)\ %=\ %{GitBranch()}\ %h%w%y
 
 " Mappings ********************************************************************
 " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
@@ -262,3 +262,41 @@ endif
 "if hostname() == "foo"
   " do something
 "endif
+"
+
+set wildmode=longest,list
+" Gui Configuration
+if has("gui_running")
+  set number
+  colorscheme koehler
+  set guifont=ProggyClean:h11
+  set guioptions=egmrLt
+  hi LineNr                    guifg=#888888 guibg=#DEDEDE
+else
+  colorscheme koehler
+end
+
+
+"if has("gui_running")
+  "set fuoptions=maxvert,maxhorz
+  "au GUIEnter * set fullscreen
+"endif
+
+:nnoremap <F5> :buffers<CR>:buffer<Space>
+
+
+" Git Grep
+func GitGrep(...)
+  let save = &grepprg
+  set grepprg=git\ grep\ -n\ $*
+  let s = 'grep'
+  for i in a:000
+    let s = s . ' ' . i
+  endfor
+  exe s
+  let &grepprg = save
+endfun
+
+" minibuf
+let g:miniBufExplSplitBelow=0 
+let g:miniBufExplorerAutoUpdate=1
