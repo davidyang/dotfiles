@@ -25,7 +25,7 @@ end
 "set anti " Antialias font
 set anti
 
-set transparency=5
+"set transparency=5
 
 " Default size of window
 set columns=120 

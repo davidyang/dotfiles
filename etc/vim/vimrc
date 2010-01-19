@@ -107,9 +107,9 @@ set statusline=%<%f%m%r\ (%l:%c)\ %=\ %{GitBranch()}\ %h%w%y
 " Mappings ********************************************************************
 " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
 imap jj <Esc>
-imap uu _
+"imap uu _
 imap hh =>
-imap aa @
+"imap aa @
 
 
 " Directories *****************************************************************
@@ -300,3 +300,12 @@ endfun
 " minibuf
 let g:miniBufExplSplitBelow=0 
 let g:miniBufExplorerAutoUpdate=1
+map ,m :MiniBufExplorer<CR>
+
+" Comments
+" , #perl # comments
+map ,# :s/^/#/<CR>
+
+" ,/ C/C++/C#/Java // comments
+map ,/ :s/^/\/\//<CR>
+

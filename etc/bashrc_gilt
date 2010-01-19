@@ -17,3 +17,6 @@ rack(){
   ack -i "$1" app/ config/ lib/
 }
 
+fvi(){
+  find . -name $1 -exec vim -p {} +
+}
