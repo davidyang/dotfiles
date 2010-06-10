@@ -70,9 +70,11 @@ set equalalways " Multiple windows, when created, are equal in size
 set splitbelow splitright
 
 "Vertical split then hop to new buffer
-:noremap ,v :vsp^M^W^W<cr>
-:noremap ,h :split^M^W^W<cr>
+:noremap ,v :vnew<cr>
+:noremap ,h :new<cr>
 
+":noremap ,s :Scratch<cr>
+":noremap ,f :Scratch<cr>:r!find . -name 
 
 " Cursor highlights ***********************************************************
 "set cursorline
@@ -102,7 +104,8 @@ set ruler " Show ruler
 " Line Wrapping ***************************************************************
 set nowrap
 set linebreak  " Wrap at word
-set statusline=%<%f%m%r\ (%l:%c)\ %=\ %{GitBranch()}\ %h%w%y
+set statusline=%f%m%r\ (%l:%c)\ %=\ %{fugitive#statusline()}\ %h%w%y
+set laststatus=2
 
 " Mappings ********************************************************************
 " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
@@ -195,13 +198,13 @@ map <F5> :!ruby %<CR>
 " -----------------------------------------------------------------------------  
 
 " NERDTree ********************************************************************
-:noremap ,n :NERDTreeToggle<CR>
+":noremap ,n :NERDTreeToggle<CR>
 
 " User instead of Netrw when doing an edit /foobar
-let NERDTreeHijackNetrw=1
+"let NERDTreeHijackNetrw=1
 
 " Single click for everything
-let NERDTreeMouseMode=1
+"let NERDTreeMouseMode=1
 
 
 " SnippetsEmu *****************************************************************
@@ -213,7 +216,7 @@ let NERDTreeMouseMode=1
 
 
 " fuzzyfinder_textmate ********************************************************
-map ,f :FufFile<CR>
+"map ,f :FufFile<CR>
 map ,b :FufBuffer<CR>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
@@ -298,9 +301,9 @@ func GitGrep(...)
 endfun
 
 " minibuf
-let g:miniBufExplSplitBelow=0 
-let g:miniBufExplorerAutoUpdate=1
-map ,m :MiniBufExplorer<CR>
+"let g:miniBufExplSplitBelow=0 
+"let g:miniBufExplorerAutoUpdate=1
+"map ,m :MiniBufExplorer<CR>
 
 " Comments
 " , #perl # comments
@@ -309,3 +312,6 @@ map ,# :s/^/#/<CR>
 " ,/ C/C++/C#/Java // comments
 map ,/ :s/^/\/\//<CR>
 
+" dpon't force dclosing of buffers
+set hidden
+set wrap

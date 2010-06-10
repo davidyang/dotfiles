@@ -1,3 +1,6 @@
+# ack
+alias ackl="ack --pager='less -r'"
+
 # git ------------------------------------------------
 alias gtshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
    ${COLOR_BLUE}gt

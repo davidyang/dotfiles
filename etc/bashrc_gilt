@@ -20,3 +20,11 @@ rack(){
 fvi(){
   find . -name $1 -exec vim -p {} +
 }
+
+sj(){
+  ssh -t gw1 ssh $1
+}
+
+sjqa(){ 
+  ssh -t jqa ssh $1
+}

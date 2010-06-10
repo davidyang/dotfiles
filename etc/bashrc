@@ -201,3 +201,6 @@ source ~/.bashrc_gilt
   #echo 'interactive shell'
   ### interactive shells (only)
 #fi
+
+     if [[ -s /Users/dyang/.rvm/scripts/rvm ]] ; then source /Users/dyang/.rvm/scripts/rvm ; fi
+

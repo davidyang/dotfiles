@@ -16,11 +16,11 @@ if [ "$OS" = "darwin" ] ; then
 fi
 
 if [ -d ~/bin ]; then
-	export PATH=:~/bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
+	export PATH=~/bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
 fi
 
 if [ -d ~/cl/bin ]; then
-	export PATH=:~/cl/bin:$PATH  # add your bin folder to the path, if you have it
+	export PATH=~/cl/bin:$PATH  # add your bin folder to the path, if you have it
 fi
 
 
@@ -59,4 +59,17 @@ ssh-add
 ##
 # Your previous /Users/dyang/.bash_profile file was backed up as /Users/dyang/.bash_profile.macports-saved_2010-01-15_at_23:45:33
 ##
+
+
+##
+# Your previous /Users/dyang/.bash_profile file was backed up as /Users/dyang/.bash_profile.macports-saved_2010-02-16_at_22:58:26
+##
+# from http://code.google.com/p/csshx/issues/detail?id=21#c4
+export VERSIONER_PERL_PREFER_32_BIT=yes
+
+# liftweb path vars
+export M2_HOME=/Applications/liftweb-1.0.1/apache-maven
+export M2=$M2_HOME/bin
+export MAVEN_OPTS="-noverify" 
+export PATH=$M2:$PATH
 
