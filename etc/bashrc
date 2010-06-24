@@ -184,8 +184,8 @@ killhard() {
 source ~/.bashrc_help
 source ~/.bashrc_app_specific
 source ~/.bashrc_host_aliases
-source ~/.bashrc_deploy
-source ~/.bashrc_gilt
+#source ~/.bashrc_deploy
+#source ~/.bashrc_gilt
 
 # Test ------------------------------------------------------------------------ 
 
