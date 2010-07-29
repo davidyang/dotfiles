@@ -189,3 +189,5 @@ mqdropdatabase(){
   echo Warning | highlight red '.*'
   mysqladmin -u root drop $@ 
 }
+
+alias mypl="mysql -u root plink_development"

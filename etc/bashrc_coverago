@@ -1,0 +1,11 @@
+
+SVNROOT=svn+ssh://dyang@svnhost/home/svn/repo
+SVN_EDITOR=vim
+#JRE_HOME=/opt/jre
+#JDK_HOME=/opt/jdk
+#GROOVY_HOME=/opt/groovy
+#GRAILS_HOME=/opt/grails
+#JAVA_HOME=/opt/jre
+#GWT_HOME=/opt/gwt
+
+export SVNROOT

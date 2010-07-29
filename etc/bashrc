@@ -184,6 +184,7 @@ killhard() {
 source ~/.bashrc_help
 source ~/.bashrc_app_specific
 source ~/.bashrc_host_aliases
+source ~/.bashrc_coverago
 #source ~/.bashrc_deploy
 #source ~/.bashrc_gilt
 
@@ -202,5 +203,5 @@ source ~/.bashrc_host_aliases
   ### interactive shells (only)
 #fi
 
-     if [[ -s /Users/dyang/.rvm/scripts/rvm ]] ; then source /Users/dyang/.rvm/scripts/rvm ; fi
+if [[ -s /Users/dyang/.rvm/scripts/rvm ]] ; then source /Users/dyang/.rvm/scripts/rvm ; fi
 

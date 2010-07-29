@@ -21,6 +21,8 @@ ln -s ~/cl/etc/bashrc ~/.bashrc
 ln -s ~/cl/etc/bashrc_help ~/.bashrc_help
 ln -s ~/cl/etc/bashrc_app_specific ~/.bashrc_app_specific
 ln -s ~/cl/etc/bashrc_host_aliases ~/.bashrc_host_aliases
+ln -s ~/cl/etc/bashrc_coverago ~/.bashrc_coverago
+
 #ln -s ~/cl/etc/bashrc_deploy ~/.bashrc_deploy
 ln -s ~/cl/etc/railsrc ~/.railsrc
 #ln -s ~/cl/etc/bashrc_gilt ~/.bashrc_gilt
