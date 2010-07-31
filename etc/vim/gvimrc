@@ -9,13 +9,13 @@ if has("gui_macvim")
 
   set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
   "set guifont=Fixed\ Medium:h13
-  set guifont=Monaco:h13
+  set guifont=Monaco:h12
 
   set guioptions-=T  " remove toolbar
   set stal=2 " turn on tabs by default
   set anti
-:nmap <silent> ,f :CommandT<CR>
-
+:nmap <silent> <C-t> :CommandT<CR>
+  set cursorline
 elseif has("x11")
 elseif has("gui_win32")
 else
