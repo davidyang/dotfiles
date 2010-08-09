@@ -216,7 +216,7 @@ let NERDTreeMouseMode=1
 
 
 " fuzzyfinder_textmate ********************************************************
-map ,f :FufFile **/<CR>
+map ,f :CommandT<CR>
 map ,b :FufBuffer<CR>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 

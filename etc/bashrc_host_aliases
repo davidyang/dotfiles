@@ -11,6 +11,6 @@ alias dhost='ssh davidyang@slauson.dreamhost.com'
 
 alias rsg='ruby script/generate'
 alias skibo='ssh dgyang@kibotzer.com'
-alias sshpl='ssh www.patient-link.net'
-alias sshplf='ssh -p 2222 www.patient-link.net'
+alias sshmini='ssh www.patientlink.net'
+alias sshplf='ssh www.patientlink.net'
 alias ssh3='ssh 395send.ath.cx'
