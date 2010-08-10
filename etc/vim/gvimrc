@@ -33,3 +33,5 @@ set lines=50
 
 " Tab headings 
 set gtl=%t gtt=%F
+
+let g:ConqueTerm_Color = 0

@@ -28,6 +28,8 @@
 
 set nocompatible
 
+call pathogen#runtime_append_all_bundles() 
+call pathogen#helptags()
 
 " Tabs ************************************************************************
 "set sta " a <Tab> in an indent inserts 'shiftwidth' spaces
@@ -216,7 +218,8 @@ let NERDTreeMouseMode=1
 
 
 " fuzzyfinder_textmate ********************************************************
-map ,f :CommandT<CR>
+"map ,f :CommandT<CR>
+map ,f :BufExplorer<CR>
 map ,b :FufBuffer<CR>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
