@@ -9,3 +9,4 @@ SVN_EDITOR=vim
 #GWT_HOME=/opt/gwt
 
 export SVNROOT
+export PATH=/Users/dyang/glassfishv3/bin:$PATH

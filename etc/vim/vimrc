@@ -331,3 +331,11 @@ nmap <D-[> <<
 vmap <D-[> <<
 imap <D-[> <C-O><<
 
+"nnoremap <C-S-Up> :m+<CR>==
+"nnoremap <C-S-Down> :m-2<CR>==
+"inoremap <C-S-Up> <Esc>:m+<CR>==gi
+"inoremap <C-S-Down> <Esc>:m-2<CR>==gi
+"vnoremap <C-S-Up> :m'>+<CR>gv=gv
+"vnoremap <C-S-Down> :m-2<CR>gv=gv
+
+

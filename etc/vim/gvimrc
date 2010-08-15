@@ -35,3 +35,37 @@ set lines=50
 set gtl=%t gtt=%F
 
 let g:ConqueTerm_Color = 0
+
+"from http://brianfromoregon.blogspot.com/2010/07/netbeans-style-line-moving-and.html
+" Alt+Shift+Up/k moves content up
+:nmap <M-S-Up> :m .-2<Enter>
+:nmap <M-S-k> <M-S-Up>
+:imap <M-S-Up> <Esc>:m .-2<Enter>gi
+:imap <M-S-k> <M-S-Up>
+:vmap <M-S-Up> :m .-2<Enter>gv
+:vmap <M-S-k> <M-S-Up>
+
+" Alt+Shift+Down/j moves content down
+:nmap <M-S-Down> :m .+1<Enter>
+:nmap <M-S-j> <M-S-Down>
+:imap <M-S-Down> <Esc>:m .+1<Enter>gi
+:imap <M-S-j> <M-S-Down>
+:vmap <M-S-Down> :m '>+1<Enter>gv
+:vmap <M-S-j> <M-S-Down>
+
+" Ctrl+Shift+Up/k copies content up
+:nmap <C-S-Up> :co .-1<Enter>
+:nmap <C-S-k> <C-S-Up>
+:imap <C-S-Up> <Esc>:co .<Enter>gi
+:imap <C-S-k> <C-S-Up>
+:vmap <C-S-Up> :co '><Enter>gv
+:vmap <C-S-k> <C-S-Up>
+
+" Ctrl+Shift+Down/j copies content down
+:nmap <C-S-Down> :co .<Enter>
+:nmap <C-S-j> <C-S-Down>
+:imap <C-S-Down> <Esc>:co .<Enter>gi<Down>
+:imap <C-S-j> <C-S-Down>
+:vmap <C-S-Down> :co .-1<Enter>gv
+:imap <C-S-j> <C-S-Down>
+
