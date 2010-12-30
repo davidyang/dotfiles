@@ -25,11 +25,12 @@
 " | Put machine/user specific settings in ~/.vimrc.local                      |
 " -----------------------------------------------------------------------------  
 
-
 set nocompatible
 
 call pathogen#runtime_append_all_bundles() 
 call pathogen#helptags()
+
+let mapleader = ","
 
 " Tabs ************************************************************************
 "set sta " a <Tab> in an indent inserts 'shiftwidth' spaces
@@ -72,8 +73,8 @@ set equalalways " Multiple windows, when created, are equal in size
 set splitbelow splitright
 
 "Vertical split then hop to new buffer
-:noremap ,v :vnew<cr>
-:noremap ,h :new<cr>
+:noremap <Leader>v :vnew<cr>
+:noremap <Leader>h :new<cr>
 
 ":noremap ,s :Scratch<cr>
 ":noremap ,f :Scratch<cr>:r!find . -name 
@@ -94,7 +95,7 @@ set smartcase " Ignore case when searching lowercase
 "set t_Co=256 " 256 colors
 set background=dark 
 syntax on " syntax highlighting
-colorscheme vividchalk
+colorscheme koehler
 
 
 " Status Line *****************************************************************
@@ -149,7 +150,7 @@ set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 " Misc ************************************************************************
 set backspace=indent,eol,start
-"set number " Show line numbers
+set nonumber " Show line numbers
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 
@@ -157,8 +158,11 @@ set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 " Invisible characters *********************************************************
 set listchars=trail:.,tab:>-,eol:$
 set nolist
-:noremap ,i :set list!<CR> " Toggle invisible chars
-:nmap <C-t> :CommandT<CR>
+:noremap <Leader>i :set list!<CR> " Toggle invisible chars
+
+:nmap <C-t> :CommandTFlush<CR>:CommandT<CR>
+let g:CommandTMaxHeight=20
+
 
 " Mouse ***********************************************************************
 set mouse=a " Enable the mouse
@@ -200,7 +204,7 @@ map <F5> :!ruby %<CR>
 " -----------------------------------------------------------------------------  
 
 " NERDTree ********************************************************************
-:noremap ,n :NERDTreeToggle<CR>
+:noremap <Leader>n :NERDTreeToggle<CR>
 
 " User instead of Netrw when doing an edit /foobar
 let NERDTreeHijackNetrw=1
@@ -219,8 +223,8 @@ let NERDTreeMouseMode=1
 
 " fuzzyfinder_textmate ********************************************************
 "map ,f :CommandT<CR>
-map ,f :BufExplorer<CR>
-map ,b :FufBuffer<CR>
+map <Leader>f :BufExplorer<CR>
+map <Leader>b :FufBuffer<CR>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
 " autocomplpop ***************************************************************
@@ -270,11 +274,11 @@ endif
 "endif
 "
 
-set wildmode=list:full
+set wildmode=list:longest,list:full
 
 " Gui Configuration
 if has("gui_running")
-  set number
+  "set number
   colorscheme vividchalk 
 "  set guifont=ProggyClean:h11
   set guioptions=egmrLt
@@ -331,36 +335,6 @@ nmap <D-[> <<
 vmap <D-[> <<
 imap <D-[> <C-O><<
 
-"from http://brianfromoregon.blogspot.com/2010/07/netbeans-style-line-moving-and.html
-" Alt+Shift+Up/k moves content up
-:nmap <M-S-Up> :m .-2<Enter>
-:nmap <M-S-k> <M-S-Up>
-:imap <M-S-Up> <Esc>:m .-2<Enter>gi
-:imap <M-S-k> <M-S-Up>
-:vmap <M-S-Up> :m .-2<Enter>gv
-:vmap <M-S-k> <M-S-Up>
 
-" Alt+Shift+Down/j moves content down
-:nmap <M-S-Down> :m .+1<Enter>
-:nmap <M-S-j> <M-S-Down>
-:imap <M-S-Down> <Esc>:m .+1<Enter>gi
-:imap <M-S-j> <M-S-Down>
-:vmap <M-S-Down> :m '>+1<Enter>gv
-:vmap <M-S-j> <M-S-Down>
-
-" Ctrl+Shift+Up/k copies content up
-:nmap <C-S-Up> :co .-1<Enter>
-:nmap <C-S-k> <C-S-Up>
-:imap <C-S-Up> <Esc>:co .<Enter>gi
-:imap <C-S-k> <C-S-Up>
-:vmap <C-S-Up> :co '><Enter>gv
-:vmap <C-S-k> <C-S-Up>
-
-" Ctrl+Shift+Down/j copies content down
-:nmap <C-S-Down> :co .<Enter>
-:nmap <C-S-j> <C-S-Down>
-:imap <C-S-Down> <Esc>:co .<Enter>gi<Down>
-:imap <C-S-j> <C-S-Down>
-:vmap <C-S-Down> :co .-1<Enter>gv
-:imap <C-S-j> <C-S-Down>
-
+let g:bufExplorerShowRelativePath=1  
+let g:bufExplorerSplitOutPathName=0
