@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.davidyang.taxes</string>
+	<key>connections</key>
+	<dict>
+		<key>52A173AF-5645-408B-B1DB-705A2E51421A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>28772CE2-EF92-4997-9C18-CB38EE55EA1C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>David Yang</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Downloads -&gt; Taxes</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>-- Paths to folders to open
+property topFolder : "/Users/dyang/Dropbox/Taxes"
+property bottomFolder : "/Users/dyang/Downloads"
+
+-- Size of created windows
+property winWidth : 2000
+property winHeight : 800
+
+-- How many pixels above/below screen centre to position windows
+property distanceFromCentre : 10
+
+-- How many pixels from side of screen to position windows
+property distanceFromSide : 50
+
+-- Set to "true" to open folders on the right-hand side of the screen.
+property rightAlign : false
+
+
+-- Open a directory in a new Finder window
+on openDirectory(thePath, aboveCentre)
+	
+	tell application "Finder"
+		
+		-- Calculate vertical centre of screen
+		set {screenL, screenT, screenWidth, screenHeight} to bounds of window of desktop
+		set yCentre to screenHeight / 2
+		
+		-- Create and resize new Finder window		
+		set theWin to make new Finder window
+		set {winL, winT, winR, winB} to theWin's bounds
+		set theWin's bounds to {winL, winT, winL + winWidth, winT + winHeight}
+		
+		-- Position window on screen
+		if rightAlign = true then
+			set xPos to screenWidth - (winWidth + distanceFromSide)
+		else
+			set xPos to distanceFromSide
+		end if
+		
+		set theOffset to winHeight + distanceFromCentre
+		
+		if aboveCentre = true then
+			set yPos to yCentre - (winHeight + distanceFromCentre)
+		else
+			set yPos to yCentre + distanceFromCentre
+		end if
+		
+		set theWin's position to {xPos, yPos}
+		
+		-- Open folder in window
+		set theWin's target to (thePath as POSIX file)
+		set theWin's current view to list view
+	end tell
+	
+end openDirectory
+
+on run (argv)
+	my openDirectory(topFolder, true)
+	my openDirectory(bottomFolder, false)
+	
+	tell application "Finder" to activate
+end run</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>28772CE2-EF92-4997-9C18-CB38EE55EA1C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>dtt</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Downloads -&gt; Taxes Finder Windows</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>52A173AF-5645-408B-B1DB-705A2E51421A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>28772CE2-EF92-4997-9C18-CB38EE55EA1C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>420</integer>
+			<key>ypos</key>
+			<integer>175</integer>
+		</dict>
+		<key>52A173AF-5645-408B-B1DB-705A2E51421A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>80</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

@@ -20,7 +20,10 @@ ln -s ~/Dropbox/dotfiles/etc/bashrc ~/.bashrc
 ln -s ~/Dropbox/dotfiles/etc/bashrc_help ~/.bashrc_help
 ln -s ~/Dropbox/dotfiles/etc/bashrc_app_specific ~/.bashrc_app_specific
 ln -s ~/Dropbox/dotfiles/etc/bashrc_host_aliases ~/.bashrc_host_aliases
-ln -s ~/Dropbox/dotfiles/etc/bashrc_coverago ~/.bashrc_coverago
+# ln -s ~/Dropbox/dotfiles/etc/bashrc_coverago ~/.bashrc_coverago
+ln -s ~/Dropbox/dotfiles/etc/rdebugrc ~/.rdebugrc
+ln -s ~/Dropbox/dotfiles/etc/gemrc ~/.gemrc
+ln -s ~/Dropbox/dotfiles/etc/inputrc ~/.inputrc
 
 #ln -s ~/Dropbox/dotfiles/etc/bashrc_deploy ~/.bashrc_deploy
 ln -s ~/Dropbox/dotfiles/etc/railsrc ~/.railsrc
@@ -40,12 +43,12 @@ ln -s ~/Dropbox/dotfiles/etc/vim ~/.vim
 #ln -s ~/Dropbox/dotfiles/etc/netbeans/6.0/config ~/.netbeans/6.0/config
 
 # subversion
-rm ~/.subversion
-ln -s ~/Dropbox/dotfiles/etc/subversion ~/.subversion
+# rm ~/.subversion
+# ln -s ~/Dropbox/dotfiles/etc/subversion ~/.subversion
 
 # autotest
-rm ~/.autotest
-ln -s ~/Dropbox/dotfiles/etc/autotest ~/.autotest
+# rm ~/.autotest
+# ln -s ~/Dropbox/dotfiles/etc/autotest ~/.autotest
 
 # irb
 rm ~/.irbrc
@@ -60,3 +63,12 @@ ln -s ~/Dropbox/dotfiles/etc/gitignore ~/.gitignore
 ln -s ~/Dropbox/dotfiles/etc/gitattributes ~/.gitattributes
 
 source ~/.bash_profile
+
+# rm -fr ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
+# rm -fr ~/Library/Application\ Support/Sublime\ Text\ 3/Pristine\ Packages
+# rm -fr ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+
+
+
+
+#git config --global diff.external ~/dotfiles/bin/git-diff-cmd.sh

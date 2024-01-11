@@ -4,9 +4,9 @@ SVN_EDITOR=vim
 #JRE_HOME=/opt/jre
 #JDK_HOME=/opt/jdk
 #GROOVY_HOME=/opt/groovy
-#GRAILS_HOME=/opt/grails
+GRAILS_HOME=/opt/grails
 #JAVA_HOME=/opt/jre
 #GWT_HOME=/opt/gwt
 
 export SVNROOT
-export PATH=/Users/dyang/glassfishv3/bin:$PATH
+export PATH=$GRAILS_HOME/bin:$PATH

@@ -8,14 +8,21 @@
 if has("gui_macvim")
 
   set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
-  "set guifont=Fixed\ Medium:h13
-  set guifont=Monaco:h12
+  set guifont=6x13:h13
+  "set guifont=Monaco:h13
+  "set linespace=-1
+  "set guifont=Monaco:h12
+  "set guifont=Monaco:h10
 
   set guioptions-=T  " remove toolbar
   set stal=2 " turn on tabs by default
-  set anti
-:nmap <silent> <C-t> :CommandTFlush<CR>:CommandT<CR>
+  set noanti
+
+  :nmap <silent> <C-t> :CommandTFlush<CR>:CommandT<CR>
   set cursorline
+
+
+
 elseif has("x11")
 elseif has("gui_win32")
 else
@@ -34,6 +41,8 @@ set lines=50
 " Tab headings 
 set gtl=%t gtt=%F
 
+map <D-F> :Ack<space>
+
 "let g:ConqueTerm_Color = 0
 map <D-e> :call StartTerm()<CR>
 
@@ -42,5 +51,9 @@ function StartTerm()
   execute 'ConqueTerm ' . $SHELL . ' --login'
   setlocal listchars=tab:\ \
 endfunction
+
+if filereadable(expand("~/.gvimrc.local"))
+  source ~/.gvimrc.local
+endif
 
 

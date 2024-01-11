@@ -1,0 +1,31 @@
+{
+	"auto_upgrade_last_run": 1344792930,
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"AutoFileName",
+		"CoffeeScript",
+		"ColorPick",
+		"DetectSyntax",
+		"DocBlockr",
+		"Git",
+		"Open-Include",
+		"Origami",
+		"Package Control",
+		"Pretty JSON",
+		"Quick File Creator",
+		"QuickThemes",
+		"Rails Partial",
+		"RailsCasts Colour Scheme",
+		"Sass",
+		"SCSS",
+		"SublimeBlockCursor",
+		"Theme - Nexus",
+		"Theme - Soda",
+		"ZenCoding"
+	],
+	"repositories":
+	[
+		"git@github.com:Xavura/CoffeeScript-Sublime-Plugin.git"
+	]
+}

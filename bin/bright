@@ -1,0 +1,3 @@
+#!/bin/bash
+ m1ddc display 1 set luminance 100
+ m1ddc display 2 set luminance 100

@@ -1,0 +1,33 @@
+{
+	"auto_upgrade_last_run": null,
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"All Autocomplete",
+		"Block Cursor Everywhere",
+		"CoffeeScript",
+		"Comments Aware Enter",
+		"DetectSyntax",
+		"Emmet",
+		"ERB Insert and Toggle Commands",
+		"Git",
+		"Open-Include",
+		"Origami",
+		"Package Control",
+		"Pretty JSON",
+		"Quick File Creator",
+		"QuickThemes",
+		"Rails Partial",
+		"RailsCasts Colour Scheme",
+		"Related Files",
+		"RubyMotionBuilder",
+		"Sass",
+		"SCSS",
+		"SideBarEnhancements",
+		"SJSON",
+		"Theme - Soda"
+	],
+	"repositories":
+	[
+	]
+}

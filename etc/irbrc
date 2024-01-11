@@ -8,7 +8,7 @@ require 'rubygems'
  
 # Dr Nic's gem inspired by
 # http://redhanded.hobix.com/inspect/stickItInYourIrbrcMethodfinder.html
-require 'what_methods'
+#require 'what_methods'
  
 # Pretty Print method
 require 'pp'
@@ -33,11 +33,11 @@ IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 # Wirble is a set of enhancements for irb
 # http://pablotron.org/software/wirble/README
 # Implies require 'pp', 'irb/completion', and 'rubygems'
-require 'wirble'
-Wirble.init
+#require 'wirble'
+#Wirble.init
  
 # Enable colored output
-Wirble.colorize
+#Wirble.colorize
  
 # Clear the screen
 def clear
@@ -106,8 +106,12 @@ IRB.conf[:SAVE_HISTORY] = 100
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 require 'rubygems'
 
-require 'looksee/shortcuts'
+#require 'looksee/shortcuts'
 
 if ENV['RAILS_ENV']
     load File.dirname(__FILE__) + '/.railsrc'
 end
+
+
+require 'awesome_print'
+#AwesomePrint.irb!

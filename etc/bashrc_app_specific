@@ -34,6 +34,7 @@ alias gtshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands:
 '"
 
 alias gt='git'
+alias gphm="git push && git push heroku master"
 alias gtinit='gt init'
 alias gtclone='gt clone'
 alias gtadd='gt add'
@@ -59,6 +60,12 @@ alias gtbranchdelete='gt branch -d'
 alias gtbranchlistall='gt branch -a'
 alias gtstash='gt stash'
 alias gtstashapply='gt stash apply'
+
+alias yb="open ~/dev/yealthy/yealthy/build/iphone/build/Debug-iphoneos/"
+alias iphone_socks="sudo networksetup -setsocksfirewallproxy \"iPhone USB\" localhost 8080"
+alias iphone_socks_off="sudo networksetup -setsocksfirewallproxystate 'iPhone USB' off"
+
+alias reset_camtasia="rm -r ~/Library/Application\ Support/.settings"
 
 gtcommit(){
   gt commit -m "$@"
@@ -97,6 +104,9 @@ gtgrep(){
 
 
 # Rails and Rake -------------------------------------------------
+alias berake="bundle exec rake"
+alias be="bundle exec"
+alias spec="bundle exec spec"
 alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
    ${COLOR_BLUE}rr${COLOR_NC}server
    ${COLOR_BLUE}rr${COLOR_NC}server${COLOR_BLUE}production
@@ -191,3 +201,11 @@ mqdropdatabase(){
 }
 
 alias mypl="mysql -u root plink_development"
+
+highlight_code() {
+  pbpaste | highlight --syntax=$1 -O rtf | pbcopy
+}
+
+alias hc=highlight_code
+
+export MAILASME_REDIRECT_URI="http://localhost:4000/auth/google/callback"

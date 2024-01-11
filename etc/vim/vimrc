@@ -27,8 +27,9 @@
 
 set nocompatible
 
-call pathogen#runtime_append_all_bundles() 
-call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles() 
+" call pathogen#helptags()
+call pathogen#infect()
 
 let mapleader = ","
 
@@ -45,6 +46,7 @@ function! Tabstyle_tabs()
   autocmd User Rails set shiftwidth=4
   autocmd User Rails set tabstop=4
   autocmd User Rails set noexpandtab
+
 endfunction
 
 function! Tabstyle_spaces()
@@ -75,9 +77,6 @@ set splitbelow splitright
 "Vertical split then hop to new buffer
 :noremap <Leader>v :vnew<cr>
 :noremap <Leader>h :new<cr>
-
-":noremap ,s :Scratch<cr>
-":noremap ,f :Scratch<cr>:r!find . -name 
 
 " Cursor highlights ***********************************************************
 "set cursorline
@@ -114,7 +113,7 @@ set laststatus=2
 " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
 imap jj <Esc>
 "imap uu _
-"imap hh =>
+imap hh =>
 "imap aa @
 
 
@@ -315,10 +314,14 @@ endfun
 
 " Comments
 " , #perl # comments
-map ,# :s/^/#/<CR>
+"map ,# :s/^/#/<CR>
+
+" Ack
+map ,a :Ack! 
+
 
 " ,/ C/C++/C#/Java // comments
-map ,/ :s/^/\/\//<CR>
+"map ,/ :s/^/\/\//<CR>
 
 " dpon't force dclosing of buffers
 set hidden
@@ -338,3 +341,25 @@ imap <D-[> <C-O><<
 
 let g:bufExplorerShowRelativePath=1  
 let g:bufExplorerSplitOutPathName=0
+"autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
+set autoread
+
+"let b:surround_{char2nr('=')} = "<%= \r %>"
+"let b:surround_{char2nr('-')} = "<% \r %>"
+"
+""Better window navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+
+""
+"" Auto Commands
+"
+
+if has("autocmd")
+  if exists("g:autosave_on_blur")
+    au FocusLost * silent! wall
+  endif
+endif

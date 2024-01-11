@@ -1,0 +1,6 @@
+{
+  "cmd": ["./fast_build.sh"],
+  "shell": true,
+  "path": "/usr/local/share/npm/bin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/dyang/.rvm/bin:/Users/dyang/.rvm/bin",
+  "working_dir": "${project_path}"
+}

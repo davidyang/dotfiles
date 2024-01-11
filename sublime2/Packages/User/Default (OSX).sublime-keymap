@@ -1,0 +1,78 @@
+[
+  { "keys": ["alt+super+r"], "command": "prompt_run_external" },
+  {"keys": ["ctrl+super+r"], "command": "reveal_in_side_bar"},
+
+  { "keys": ["escape"], "command": "run_macro_file",
+          "args": {"file": "Packages/User/Really_Go_To_Command_mode.sublime-macro"},
+          "context":
+          [
+              { "key": "auto_complete_visible", "operator": "equal", "operand": true },
+              { "key": "setting.command_mode", "operand": false },
+              { "key": "setting.is_widget", "operand": false }
+          ]
+  },
+  { "keys": ["super+shift+."], "command": "erb" },
+
+  { "keys": ["h", "h"], 
+    "command": "insert",
+    "args": {"characters": "=>"},
+    "context": [
+      { "key": "setting.command_mode", "operand": false },
+      { "key": "setting.is_widget", "operand": false }
+    ]
+  },   
+  { "keys": ["j", "j"], 
+    "command": "exit_insert_mode",
+    "context": [
+      { "key": "setting.command_mode", "operand": false },
+      { "key": "setting.is_widget", "operand": false }
+    ]
+  }, 
+  { "keys": ["ctrl+shift+f"],
+    "command": "open_search_result" },
+  { "keys": ["ctrl+w"], 
+    "command": "delete_word", 
+    "args": {"forward":false, "sub_words":true}, 
+    "context": [
+      {"key": "setting.command_mode", "operand":false}
+    ]
+  },
+  { "keys": ["ctrl+super+n"], 
+    "command": "quick_create_file" },
+  { "keys": ["super+ctrl+d"], 
+    "command": "quick_create_directory" },
+  { "keys": [",", "n"], "command": "quick_create_file", "context": [{"key": "setting.command_mode"}] },
+  { "keys": [",", "d"], "command": "quick_create_directory", "context": [{"key": "setting.command_mode"}] },
+  { "keys": ["g", "f"], 
+    "command": "open_include", 
+    "context": [
+      {"key": "setting.command_mode", "operand":true}
+    ] 
+  },
+  { "keys": ["ctrl+w", "k"], "command": "travel_to_pane", "args": {"direction": "up"}, 
+    "context": [
+      {"key": "setting.command_mode", "operand":true}
+    ] },
+  { "keys": ["ctrl+w", "l"], "command": "travel_to_pane", "args": {"direction": "right"}, 
+    "context": [
+      {"key": "setting.command_mode", "operand":true}
+    ] },
+  { "keys": ["ctrl+w", "j"], "command": "travel_to_pane", "args": {"direction": "down"}, 
+    "context": [
+      {"key": "setting.command_mode", "operand":true}
+    ] },
+  { "keys": ["ctrl+w", "h"], "command": "travel_to_pane", "args": {"direction": "left"}, 
+    "context": [
+      {"key": "setting.command_mode", "operand":true}
+    ] },
+  { "keys": ["ctrl+w", "ctrl+k"], "command": "create_pane", "args": {"direction": "up"}, "context": [ {"key": "setting.command_mode", "operand":true } ] },
+  { "keys": ["ctrl+w", "ctrl+l"], "command": "create_pane", "args": {"direction": "right"}, "context": [ {"key": "setting.command_mode", "operand":true } ] },
+  { "keys": ["ctrl+w", "ctrl+j"], "command": "create_pane", "args": {"direction": "down"}, "context": [ {"key": "setting.command_mode", "operand":true } ] },
+  { "keys": ["ctrl+w", "ctrl+h"], "command": "create_pane", "args": {"direction": "left"}, "context": [ {"key": "setting.command_mode", "operand":true } ] },
+  
+  { "keys": ["ctrl+w", "ctrl+shift+k"], "command": "destroy_pane", "args": {"direction": "up"}, "context": [ {"key": "setting.command_mode", "operand":true } ] },
+  { "keys": ["ctrl+w", "ctrl+shift+l"], "command": "destroy_pane", "args": {"direction": "right"}, "context": [ {"key": "setting.command_mode", "operand":true } ] },
+  { "keys": ["ctrl+w", "ctrl+shift+j"], "command": "destroy_pane", "args": {"direction": "down"}, "context": [ {"key": "setting.command_mode", "operand":true } ] },
+  { "keys": ["ctrl+w", "ctrl+shift+h"], "command": "destroy_pane", "args": {"direction": "left"}, "context": [ {"key": "setting.command_mode", "operand":true } ] }
+
+]

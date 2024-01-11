@@ -1,0 +1,5 @@
+{
+  "cmd": ["alloy run --no-colors"],
+  "working_dir": "${project_path:${folder}}",
+  "shell": true
+}

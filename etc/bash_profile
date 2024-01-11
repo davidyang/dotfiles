@@ -7,12 +7,12 @@ export MACHINE=`uname -m | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdef
 export PLATFORM="$MACHINE-$OS-$OSVERSION"
 # Note, default OS is assumed to be OSX
 
-
-
 # Path ------------------------------------------------------------
 if [ "$OS" = "darwin" ] ; then
-  export PATH=/opt/ree/bin:/opt/local/bin:/usr/local/sbin:/opt/local/sbin:/usr/local/mysql/bin:$PATH  # OS-X Specific, with MacPorts and MySQL installed
+  # export PATH=/opt/ree/bin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:/opt/local/sbin:/usr/local/mysql/bin:$PATH  /
+  # OS-X Specific, with MacPorts and MySQL installed
   #export PATH=/opt/local/bin:/opt/local/sbin:$PATH  # OS-X Specific, with MacPorts installed
+  export PATH=$PATH
 fi
 
 if [ -d ~/bin ]; then
@@ -31,12 +31,12 @@ source ~/.bashrc
 
 
 # Hello Messsage --------------------------------------------------
-if [[ "$TERM_PROGRAM" != "DTerm" ]]; then
-echo -e "Kernel Information: " `uname -smr`
-echo -e "${COLOR_BROWN}`bash --version`"
-echo -ne "${COLOR_LIGHT_GRAY}Uptime: "; uptime
-echo -ne "${COLOR_LIGHT_GRAY}Server time is: "; date
-fi
+# if [[ "$TERM_PROGRAM" != "DTerm" ]]; then
+# echo -e "Kernel Information: " `uname -smr`
+# echo -e "${COLOR_BROWN}`bash --version`"
+# echo -ne "${COLOR_LIGHT_GRAY}Uptime: "; uptime
+# echo -ne "${COLOR_LIGHT_GRAY}Server time is: "; date
+# fi
 
 
 # Notes: ----------------------------------------------------------
@@ -54,22 +54,57 @@ fi
 #     bashrc
 #     .bashrc
 
-ssh-add
+ssh-add &> /dev/null
 
-##
-# Your previous /Users/dyang/.bash_profile file was backed up as /Users/dyang/.bash_profile.macports-saved_2010-01-15_at_23:45:33
-##
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+# ruby setup
+eval "$(rbenv init -)"
+
+# node setup
+export NODE_ENV=development
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+export PATH=/Users/dyang/Library/Android/sdk/platform-tools:/Users/dyang/Library/Android/sdk/build-tools/27.0.3:$PATH
 
 
-##
-# Your previous /Users/dyang/.bash_profile file was backed up as /Users/dyang/.bash_profile.macports-saved_2010-02-16_at_22:58:26
-##
-# from http://code.google.com/p/csshx/issues/detail?id=21#c4
-export VERSIONER_PERL_PREFER_32_BIT=yes
+# added by Anaconda3 5.3.0 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/dyang/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     \eval "$__conda_setup"
+# else
+#     if [ -f "/Users/dyang/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/dyang/anaconda3/etc/profile.d/conda.sh"
+#         CONDA_CHANGEPS1=false conda activate base
+#     else
+#         \export PATH="/Users/dyang/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda init <<<
+# added by Anaconda3 2019.03 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/dyang/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/dyang/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/dyang/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/dyang/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
 
-# liftweb path vars
-#export M2_HOME=/Applications/liftweb-1.0.1/apache-maven
-#export M2=$M2_HOME/bin
-#export MAVEN_OPTS="-noverify" 
-#export PATH=$M2:$PATH
+alias gam="~/bin/gam/gam"
 
+gam() { "/Users/dyang/bin/gam/gam" "$@" ; }
+
+function gam() { "/Users/dyang/bin/gam/gam" "$@" ; }
