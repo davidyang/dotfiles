@@ -39,7 +39,7 @@
 				<integer>68</integer>
 				<key>script</key>
 				<string>-- Paths to folders to open
-property topFolder : "/Users/dyang/Dropbox/Taxes"
+property topFolder : "/Users/dyang/Dropbox/Taxes/2023"
 property bottomFolder : "/Users/dyang/Downloads"
 
 -- Size of created windows

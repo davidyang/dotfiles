@@ -22,6 +22,7 @@
 #	external = /Users/dyang/dotfiles/bin/git-diff-cmd.sh
 [push]
 	default = matching
+	recurseSubmodules = check
 [diff]
 	tool = diffmerge
 [difftool "diffmerge"]
@@ -31,3 +32,24 @@
 [mergetool "diffmerge"]
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = true
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[gc]
+	autoDetach = false
+[commit]
+	gpgSign = false
+[pull]
+	rebase = false
+[gui]
+	pruneduringfetch = true
+[smartgit "submodule"]
+	fetchalways = false
+	update = true
+	initializenew = true
+[init]
+	defaultBranch = master
+[include]
+	path = .smartgit-ai
