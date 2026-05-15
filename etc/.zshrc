@@ -1,3 +1,10 @@
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/dyang/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -110,50 +117,39 @@ function parse_git_branch() {
     fi
 }
 
-PS1='%n@%m %F{cyan}%~%f%F{green}$(parse_git_branch)%f %% '
+PS1='%n@$(hostname | cut -d. -f1) %F{cyan}%~%f%F{green}$(parse_git_branch)%f %% '
 
 
 
 setopt PROMPT_SUBST
 
 export EDITOR='subl -w'
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:~/go/bin
 
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
 
-eval "$(jenv init -)"
-
-
 source /Users/dyang/Dropbox/dotfiles/etc/zsh-z/zsh-z.plugin.zsh
 zstyle ':completion:*' menu select
-
-
-
 
 ssh-add -q
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 export PATH=~/n/bin:$PATH
-export PATH=~/.emacs.d/bin:$PATH
 
-# bun completions
-[ -s "/Users/dyang/.bun/_bun" ] && source "/Users/dyang/.bun/_bun"
+export HOMEBREW_NO_AUTO_UPDATE=1 
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/Users/dyang/bin:$PATH"
+zstyle ':completion:*' rehash true
 
+alias yt-dlp=yt-dlp -S res,ext:mp4:m4a --recode mp4
 
-# deno
+#eval "$(atuin init zsh --disable-up-arrow)"
 
-  export DENO_INSTALL="/Users/dyang/.deno"
-  export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 _bb_tasks() {
     local matches=(`bb tasks |tail -n +3 |cut -f1 -d ' '`)
@@ -162,24 +158,178 @@ _bb_tasks() {
 }
 compdef _bb_tasks bb
 
-export HOMEBREW_NO_AUTO_UPDATE=1 
+alias vi=nvim
+alias vim=nvim
+function lwldev() {
+	for p in server tailwind livereload  # codewatch beansync
+	do bb dev run $p 
+	done
+}
 
-export PATH="/Users/dyang/bin:$PATH"
-zstyle ':completion:*' rehash true
+launchctl load ~/Library/LaunchAgents/com.dyang.keyboardremap.plist 2>/dev/null
+
+alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
+remap_ctrl() {
+	hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x7000000e6,"HIDKeyboardModifierMappingDst":0x7000000e0}]}' --matching '{"ProductID":0x0}' > /dev/null
+}
+
+remap_ctrl
+export PATH="$HOME/.local/bin:$PATH"
+sgit() { (nohup /Applications/SmartGit.app/Contents/MacOS/SmartGit "$@" >/dev/null 2>&1 &) }
+alias g=git 
+alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/dyang/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/dyang/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/dyang/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/dyang/miniconda3/bin:$PATH"
+# opencode
+export PATH=/Users/dyang/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/Users/dyang/.bun/_bun" ] && source "/Users/dyang/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# lazyworktree
+alias lw=lazyworktree
+source /Users/dyang/go/pkg/mod/github.com/chmouel/lazyworktree@v1.45.0/shell/functions.zsh
+jt() { worktree_jump $(git rev-parse --show-toplevel) "$@"; }
+
+
+itab() {
+    # itab <N>  — open iTerm2 tab for ~/dev/lwl/ibworktrees/worktree<N>
+    #   top-left  : cd app; LWL_HTTPS_PORT=844(2+N) bb dev nrepl app
+    #   bottom-left (~20% h): plain shell at worktree root
+    #   right     : plain shell at worktree root (for claude/codex)
+    local n="${1:-1}"
+    local wt_dir="$HOME/dev/lwl/ibworktrees/worktree${n}"
+    local https_port=$((8442 + n))
+    local wt_label="WT${n}"
+
+    # Per-worktree VSCode titleBar.activeBackground (hardcoded; mirrors
+    # .vscode/settings.json in each worktree). Used as the iTerm tab color
+    # so the iTerm tab visually pairs with the VSCode title bar.
+    local wt_color
+    case "$n" in
+        1) wt_color="007ACC" ;;  # blue
+        2) wt_color="16825D" ;;  # green
+        3) wt_color="D67E15" ;;  # orange
+        4) wt_color="663399" ;;  # purple
+        5) wt_color="B52E31" ;;  # red
+        *) wt_color="D4D4D4" ;;  # fallback: VSCode editor gray
+    esac
+    local wt_r=$((16#${wt_color:0:2}))
+    local wt_g=$((16#${wt_color:2:2}))
+    local wt_b=$((16#${wt_color:4:2}))
+
+    if [[ ! -d "$wt_dir" ]]; then
+        echo "itab: $wt_dir does not exist" >&2
+        return 1
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
+    # base64-encoded badge strings (iTerm SetBadgeFormat expects base64)
+    local badge_top="$(printf 'WT%s\n:%s\nnrepl' "$n" "$https_port" | base64)"
+    local badge_bot="$(printf 'WT%s\nshell' "$n" | base64)"
+    local badge_right="$(printf 'WT%s\nagent' "$n" | base64)"
+
+    osascript - "$wt_label" "$wt_dir" "$https_port" "$badge_top" "$badge_bot" "$badge_right" "$wt_r" "$wt_g" "$wt_b" <<'EOF'
+on run argv
+  set wtLabel to item 1 of argv
+  set wtDir to item 2 of argv
+  set httpsPort to item 3 of argv
+  set badgeTop to item 4 of argv
+  set badgeBot to item 5 of argv
+  set badgeRight to item 6 of argv
+  set wtR to item 7 of argv
+  set wtG to item 8 of argv
+  set wtB to item 9 of argv
+
+  set titlePrefix to wtLabel & " - "
+
+  -- Type the literal characters "\e" and "\a" into the shell; the shell's
+  -- printf interprets them as ESC and BEL. We can't type raw ESC/BEL because
+  -- ESC would flip zsh into vi-command mode and discard the rest of the line.
+
+  -- Tab background color = VSCode titleBar.activeBackground for this worktree.
+  -- Set via OSC 6;1;bg;<channel>;brightness;<0-255>. iTerm tracks tab color
+  -- per session and displays the active session's color, so emit from every pane.
+  set tabColorCmd to "printf '\\e]6;1;bg;red;brightness;" & wtR & "\\a\\e]6;1;bg;green;brightness;" & wtG & "\\a\\e]6;1;bg;blue;brightness;" & wtB & "\\a'"
+
+  -- Override OMZ's title() so the tab title is always "WTn - <command>".
+  set titleCmd to "_itab_label='" & wtLabel & "'; title() { : ${2=$1}; print -Pn \"\\e]2;${_itab_label} - ${2:q}\\a\"; print -Pn \"\\e]1;${_itab_label} - ${1:q}\\a\"; }; title zsh"
+
+  tell application "iTerm2"
+    activate
+    -- If a tab already shows our "WTn - …" title, select it instead of opening a new one.
+    repeat with w in windows
+      tell w
+        repeat with t in tabs
+          tell t
+            set sessNames to name of sessions
+            repeat with sn in sessNames
+              if (sn as string) starts with titlePrefix then
+                select t
+                tell w to select
+                return
+              end if
+            end repeat
+          end tell
+        end repeat
+      end tell
+    end repeat
+
+    tell current window
+      -- Save window geometry; splits + `set rows` otherwise enlarge the window.
+      set savedBounds to bounds
+      set newTab to (create tab with default profile)
+      set topLeft to current session of newTab
+
+      tell topLeft
+        set rightPane to (split vertically with default profile)
+      end tell
+
+      tell topLeft
+        set bottomLeft to (split horizontally with default profile)
+      end tell
+
+      try
+        set totalRows to rows of topLeft
+        set targetRows to (totalRows / 5) as integer
+        if targetRows < 4 then set targetRows to 4
+        set rows of bottomLeft to targetRows
+      end try
+
+      try
+        set bounds to savedBounds
+      end try
+
+      tell topLeft
+        write text tabColorCmd
+        write text titleCmd
+        write text "printf '\\e]1337;SetBadgeFormat=" & badgeTop & "\\a'"
+        write text "cd " & quoted form of wtDir & "/app && LWL_HTTPS_PORT=" & httpsPort & " bb dev nrepl app"
+      end tell
+
+      tell bottomLeft
+        write text tabColorCmd
+        write text titleCmd
+        write text "printf '\\e]1337;SetBadgeFormat=" & badgeBot & "\\a'"
+        write text "cd " & quoted form of wtDir
+      end tell
+
+      tell rightPane
+        write text tabColorCmd
+        write text titleCmd
+        write text "printf '\\e]1337;SetBadgeFormat=" & badgeRight & "\\a'"
+        write text "cd " & quoted form of wtDir
+      end tell
+
+      select rightPane
+    end tell
+  end tell
+end run
+EOF
+}
+
+alias gw="git worktree"

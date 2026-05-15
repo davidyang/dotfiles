@@ -1,3 +1,110 @@
+# Pre-existing entries
 distribute
 etc/vim/.netrwhist
 etc/vim/.VimballRecord
+
+# ---------- macOS junk ----------
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# ---------- Editor / IDE state ----------
+# Cursor (and VSCode-family) per-machine state — keep settings.json,
+# keybindings.json, snippets/ trackable, drop everything else.
+cursor-user/History/
+cursor-user/workspaceStorage/
+cursor-user/globalStorage/
+cursor-user/logs/
+cursor-user/CachedExtensions/
+cursor-user/CachedExtensionVSIXs/
+*.vsix
+
+# Sublime / Emacs / Vim local junk
+*.sublime-workspace
+*~
+*.swp
+*.swo
+.netrwhist
+.VimballRecord
+
+# ---------- Language / tool caches ----------
+__pycache__/
+*.pyc
+*.pyo
+node_modules/
+.yarn/cache/
+.yarn/install-state.gz
+.pnp.*
+
+# Clojure tooling
+.clj-kondo/.cache/
+.lsp/.cache/
+.cpcache/
+.shadow-cljs/
+.calva/output-window/
+*.calva-repl
+
+# ---------- Per-machine app state under config/ ----------
+# Yarn global install tree (tens of thousands of files)
+config/yarn/global/
+config/yarn/link/
+
+# Secret-bearing / per-machine
+config/gh/hosts.yml
+config/github-copilot/
+config/atuin/
+config/1Password/
+config/configstore/
+config/op/
+
+# Misc tool runtime state
+config/nvim/.netrwhist
+config/calva/output-window/
+config/joyride/.cache/
+
+# ---------- Alfred per-machine state ----------
+# Keep tracked workflow definitions; drop machine-local prefs/caches.
+alfred-config/Alfred.alfredpreferences/preferences/local/
+alfred-config/Alfred.alfredpreferences/preferences/appearance/
+alfred-config/Alfred.alfredpreferences/preferences/features/clipboard/
+alfred-config/Alfred.alfredpreferences/preferences/features/defaultresults/
+alfred-config/Alfred.alfredpreferences/preferences/workflows/
+alfred-config/Alfred.alfredpreferences/snippets/
+alfred-config/Alfred.alfredpreferences/.DS_Store
+
+# ---------- Secrets / credentials ----------
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.keystore
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+id_ecdsa
+id_ecdsa.pub
+known_hosts
+*.env
+.env.*
+!.env.example
+*_token
+*.token
+*credentials*
+
+# ---------- Build / log output ----------
+*.log
+build/
+dist/
+out/
+target/
+*.tmp
